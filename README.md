@@ -1,3 +1,3 @@
 ﻿# Welcome!
 
-This repo contains my solutions for the Boot.dev exercises. 
+This repo contains my solutions for Boot.dev exercises. 
