@@ -1,1 +1,1 @@
-﻿# solutions for Boot.dev exercises
+﻿# Solutions for Boot.dev exercises
