@@ -2,18 +2,18 @@
 
 import unittest
 
-from htmlnode import HTMLnode
+from htmlnode import HTMLNode
 
 
 class TestHtmlNode(unittest.TestCase):
-    def test_true_props_to_html(self):
-        node = HTMLnode(props={"href": "https://www.google.com", "target": "_blank", "foo": "bar"})
-        self.assertEqual(node.props_to_html(), f' href="https://www.google.com" target="_blank" foo="bar"')
+    def test_pass_props_to_html(self):
+        node = HTMLNode(props={"href": "https://www.google.com", "target": "_blank", "foo": "bar"})
+        self.assertEqual(node.props_to_html(), ' href="https://www.google.com" target="_blank" foo="bar"')
 
 
-    def test_false_props_to_html(self):
-        node = HTMLnode(props={"href": "https://www.google.com", "target": "_blank", "foo": "bar"})
-        self.assertEqual(node.props_to_html(), f' href="https://www.google.com" target="_blank" foo="bar!"')
+    def test_fail_props_to_html(self):
+        node = HTMLNode(props={"href": "https://www.google.com", "target": "_blank", "foo": "bar"})
+        self.assertEqual(node.props_to_html(), ' href="https://www.google.com" target="_blank" foo="bar!"')
 
 
 
