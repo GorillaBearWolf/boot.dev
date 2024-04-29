@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-class HTMLnode:
+class HTMLNode:
     def __init__(self, tag=None, value=None, children=None, props=None) -> None:
         self.tag = tag
         self.value = value
