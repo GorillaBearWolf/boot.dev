@@ -2,7 +2,7 @@
 
 from htmlnode import HTMLNode
 
-class LeafNode(HTMLNode):
+class ParentNode(HTMLNode):
     """_summary_
 
     Args:
@@ -10,18 +10,18 @@ class LeafNode(HTMLNode):
     """
 
 
-    def __init__(self, tag="", value="", props=None) -> None:
+    def __init__(self, children, tag="", props=None) -> None:
         super().__init__()
+        self.children = children
         self.tag = tag
-        self.value = value
         self.props = props
 
 
     def to_html(self):
-        if not self.value:
-            raise ValueError("No leaf node value")
         if not self.tag:
-            return self.value
+            raise ValueError("No tag provided")
+        if not self.children:
+            raise ValueError("No children found")
         if self.props:
             return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
         return f"<{self.tag}>{self.value}</{self.tag}>"
