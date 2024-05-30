@@ -5,7 +5,7 @@ import unittest
 from htmlnode import HTMLNode
 
 
-class TestHtmlNode(unittest.TestCase):
+class TestHTMLNode(unittest.TestCase):
     def test_pass_props_to_html(self):
         node = HTMLNode(props={"href": "https://www.google.com", "target": "_blank", "foo": "bar"})
         self.assertEqual(node.props_to_html(), ' href="https://www.google.com" target="_blank" foo="bar"')
