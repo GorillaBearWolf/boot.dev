@@ -1,8 +1,13 @@
 class LinkedList:
     def add_to_tail(self, node):
-        if node.head is None:
-            node = node.head
-            
+        if self.head is None:
+            self.head = node
+        else:
+            current = self.head
+            while current.next is not None:
+                current = current.next
+            current.next = node
+
 
 
     # don't touch below this line
