@@ -1,7 +1,19 @@
 ﻿def reverse_string(s):
+    if not s:
+        return ""
+    i = 0
+    while i < len(s) and s[i] != " ":
+        i += 1
+    current_substring = s[:i][::-1]
+    substrings = reverse_string(s[i+1:])
+    return (substrings + " " + current_substring).strip()
+
+""" COURSE SOLUTION
     if len(s) == 0:
         return s
     return reverse_string(s[1:]) + s[0]
+"""
+
 
 run_cases = [
     ("Functional programming", "gnimmargorp lanoitcnuF"),
