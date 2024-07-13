@@ -4,6 +4,7 @@
 .LSOverride
 .ipynb_checkpoints
 notebooks
+__pycache__
 
 # Icon must end with two \r
 Icon
@@ -27,4 +28,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-.gitignore
