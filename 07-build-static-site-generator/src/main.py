@@ -5,7 +5,7 @@ from textnode import TextNode
 
 def main():
     node = TextNode("Ipsum lorem", "bold", "http://www.refsnider.me")
-    print(node)
+    print(f"textnode: {node}")
 
 
 if __name__ == "__main__":

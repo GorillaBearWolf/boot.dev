@@ -2,45 +2,43 @@
 
 import unittest
 
-from textnode import (
-    TextNode,
-    text_type_text,
-    text_type_bold,
-    text_type_italic,
-    text_type_code,
-    text_type_link,
-    text_type_image,
-)
+from textnode import TextNode
 
 
 class TestTextNode(unittest.TestCase):
-    def test_pass_eq(self):
-        node = TextNode("This is a text node", text_type_text)
-        node2 = TextNode("This is a text node", text_type_text)
+    def test_textnode_eq_nodes(self):
+        node = TextNode("This is a text node", "text", None)
+        node2 = TextNode("This is a text node", "text", None)
         self.assertEqual(node, node2)
 
 
-    def test_fail_eq_text(self):
-        node = TextNode("This is a text node", text_type_image, "google.com")
-        node2 = TextNode("This is a test node", text_type_image, "espn.com")
+    def test_textnode_eq_nodes_blank_url(self):
+        node = TextNode("This is a text node", "code")
+        node2 = TextNode("This is a text node", "code")
         self.assertEqual(node, node2)
 
 
-    def test_fail_eq_url(self):
-        node = TextNode("This is a text node", text_type_code, "google.com")
-        node2 = TextNode("This is a text node", text_type_code, "espn.com")
-        self.assertEqual(node, node2)
+    def test_textnode_diff_urls(self):
+        node = TextNode("This is a text node", "image", "google.com")
+        node2 = TextNode("This is a test node", "image", "espn.com")
+        self.assertNotEqual(node, node2)
 
 
-    def test_fail_eq_text_type(self):
-        node = TextNode("This is a text node", text_type_link, "espn.com")
-        node2 = TextNode("This is a text node", text_type_bold, "espn.com")
-        self.assertEqual(node, node2)
+    def test_textnode_diff_text_type(self):
+        node = TextNode("This is a text node", "image", "google.com")
+        node2 = TextNode("This is a text node", "link", "google.com")
+        self.assertNotEqual(node, node2)
 
 
-    def test_pass_eq_repr(self):
-        node = TextNode("This is a text node", text_type_italic, "espn.com")
-        self.assertEqual("TextNode(This is a text node, italic, espn.com)", node.__repr__())
+    def test_textnode_diff_text(self):
+        node = TextNode("This is a text node", "bold", "google.com")
+        node2 = TextNode("This is a test node", "bold", "google.com")
+        self.assertNotEqual(node, node2)
+
+
+    def test_textnode_eq_str_repr(self):
+        node = TextNode("This is a text node", "italic", "espn.com")
+        self.assertEqual(str(node), node.__repr__())
 
 
 if __name__ == "__main__":
