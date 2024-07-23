@@ -2,11 +2,11 @@ class LinkedList:
     def add_to_tail(self, node):
         if self.head is None:
             self.head = node
-        else:
-            current = self.head
-            while current.next is not None:
-                current = current.next
-            current.next = node
+            return
+        last_node = None
+        for current_node in self:
+            last_node = current_node
+        last_node.set_next(node)
 
 
 
