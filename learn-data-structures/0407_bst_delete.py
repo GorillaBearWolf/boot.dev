@@ -1,17 +1,13 @@
-from math import inf
 import random
 
 class BSTNode:
-    def get_min(self):
-        current_min = -inf
-        while self.left != None:
-            self.left = current_min
-        return self.val
-
-
-
-    def get_max(self):
-        pass
+    def delete(self, val):
+        if self.val is None:
+            return
+        if val < self.val:
+            if self.left:
+                self.left = self.left.delete(val)
+            return self.val
 
     # don't touch below this line
 
@@ -42,12 +38,48 @@ class BSTNode:
 
 
 run_cases = [
-    (5, "Ebork#0", "Nyx#14"),
-    (10, "Astram#1", "Marlo#29"),
+    (6, 2, ["Ebork#0", "Anthony#9", "Ash#16", "Rhogar#17"]),
+    (
+        12,
+        4,
+        [
+            "Elian#2",
+            "Bhurdan#10",
+            "Thoreuth#11",
+            "Rhogar#17",
+            "Ebork#22",
+            "Myra#27",
+            "Jax#30",
+            "Thoreuth#33",
+        ],
+    ),
 ]
 
 submit_cases = run_cases + [
-    (15, "Elian#2", "Yamil#42"),
+    (
+        24,
+        6,
+        [
+            "Elian#2",
+            "Tarlock#3",
+            "Anthony#9",
+            "Bhurdan#10",
+            "Bob#12",
+            "Ash#16",
+            "Ember#18",
+            "Mikel#19",
+            "Ebork#22",
+            "Astram#23",
+            "Varis#35",
+            "Rhogar#39",
+            "Astram#45",
+            "Marlo#51",
+            "Bhurdan#54",
+            "Elian#68",
+            "Tarlock#69",
+            "Grog#70",
+        ],
+    ),
 ]
 
 
@@ -95,12 +127,12 @@ class Character:
         return "".join(self.character_name)
 
 
-def inorder(self, visited):
+def inorder_char_names(self, visited):
     if self.left:
-        visited = self.left.inorder(visited)
-    visited.append(self.val)
+        visited = self.left.inorder_char_names(visited)
+    visited.append(self.val.character_name)
     if self.right:
-        visited = self.right.inorder(visited)
+        visited = self.right.inorder_char_names(visited)
     return visited
 
 
@@ -117,7 +149,7 @@ def format_tree_string(bst_node, lines, level=0):
         format_tree_string(bst_node.left, lines, level + 1)
 
 
-setattr(BSTNode, "inorder", inorder)
+setattr(BSTNode, "inorder_char_names", inorder_char_names)
 setattr(BSTNode, "__repr__", print_tree)
 
 
@@ -135,8 +167,11 @@ def get_characters(num):
     return characters
 
 
-def test(num_characters, min_character, max_character):
+def test(num_characters, num_to_delete, expected):
     characters = get_characters(num_characters)
+    characters_copy = characters.copy()
+    random.shuffle(characters_copy)
+    characters_to_delete = characters_copy[:num_to_delete]
     bst = BSTNode()
     for character in characters:
         bst.insert(character)
@@ -145,17 +180,21 @@ def test(num_characters, min_character, max_character):
     print("-------------------------------------")
     print(bst)
     print("-------------------------------------\n")
-    print(f"Expected min: {min_character}")
-    print(f"Expected max: {max_character}")
     try:
-        actual_min = bst.get_min()
-        actual_max = bst.get_max()
-        print(f"Actual min: {actual_min}")
-        print(f"Actual max: {actual_max}")
-        if (
-            actual_max.character_name == max_character
-            and actual_min.character_name == min_character
-        ):
+        actual_bst = BSTNode()
+        for character in characters:
+            actual_bst.insert(character)
+        print("Deleting characters: " + str(characters_to_delete))
+        for character in characters_to_delete:
+            actual_bst = actual_bst.delete(character)
+        print("Actual Tree:")
+        print("-------------------------------------")
+        print(actual_bst)
+        print("-------------------------------------")
+        actual = actual_bst.inorder_char_names([])
+        print(f"Expecting: {expected}")
+        print(f"Actual: {actual}")
+        if expected == actual:
             print("Pass \n")
             return True
         print("Fail \n")
