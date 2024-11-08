@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Enter lesson folder name: "
+read input
+
+folder="/Users/mrefsnider/workspace/boot.dev/$input"
+
+mkdir $folder
+sleep 1
+touch $folder/main.py $folder/main_test.py
