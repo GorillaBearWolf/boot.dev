@@ -4,3 +4,6 @@
 [submodule "learn-git/webflyx"]
 	path = learn-git/webflyx
 	url = ../learn-git/webflyx
+[submodule "build-asteroids"]
+	path = build-asteroids
+	url = ../build-asteroids
