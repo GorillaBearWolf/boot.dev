@@ -3,8 +3,12 @@
 .AppleDouble
 .LSOverride
 .ipynb_checkpoints
-notebooks
-__pycache__
+notebooks/
+__pycache__/
+.vscode/
+venv/
+.venv/
+
 
 # Icon must end with two \r
 Icon
