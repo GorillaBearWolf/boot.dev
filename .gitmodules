@@ -1,9 +1,9 @@
-[submodule "learn-git/webflyx-local"]
-	path = learn-git/webflyx-local
-	url = ../learn-git/webflyx-local
-[submodule "learn-git/webflyx"]
-	path = learn-git/webflyx
-	url = ../learn-git/webflyx
+[submodule "git/webflyx-local"]
+	path = git/webflyx-local
+	url = ../git/webflyx-local
+[submodule "git/webflyx"]
+	path = git/webflyx
+	url = ..git/webflyx
 [submodule "build-asteroids"]
-	path = build-asteroids
-	url = ../build-asteroids
+	path = asteroids
+	url = ../asteroids
