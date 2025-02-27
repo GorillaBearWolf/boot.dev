@@ -3,7 +3,7 @@
 echo "Enter lesson folder name: "
 read input
 
-folder="/Users/mrefsnider/workspace/boot.dev/$input"
+folder="$HOME/workspace/boot.dev/$input"
 
 mkdir $folder
 sleep 1
