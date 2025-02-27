@@ -4,6 +4,3 @@
 [submodule "git/webflyx"]
 	path = git/webflyx
 	url = ..git/webflyx
-[submodule "build-asteroids"]
-	path = asteroids
-	url = ../asteroids
