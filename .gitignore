@@ -7,7 +7,7 @@ __pycache__/
 .vscode/
 venv/
 .venv/
-.trunk
+.trunk/
 
 
 # Icon must end with two \r
