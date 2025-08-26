@@ -8,6 +8,7 @@ __pycache__/
 venv/
 .venv/
 .trunk/
+uv.lock
 
 
 # Icon must end with two \r
